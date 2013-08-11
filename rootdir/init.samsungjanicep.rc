@@ -344,7 +344,7 @@ on early-boot
     class_start modem-core
 
     # Enable autonomous power management in CM
-    write /sys/module/cm/parameters/enable_auto_pm 1
+    #write /sys/module/cm/parameters/enable_auto_pm 1
 
 on boot
 
