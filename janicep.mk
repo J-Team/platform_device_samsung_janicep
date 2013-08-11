@@ -22,10 +22,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/tee/custom_ta.ssw:system/lib/tee/custom_ta.ssw \
     $(LOCAL_PATH)/tee/libbassapp_ssw:system/lib/tee/libbassapp_ssw \
     $(LOCAL_PATH)/tee/smcl_ta_8500bx_secure.ssw:system/lib/tee/smcl_ta_8500bx_secure.ssw 
-
-# Packages
-PRODUCT_PACKAGES += \
-    	GalaxyS2Settings 
     	
 # NFC
 PRODUCT_PACKAGES += \
@@ -60,7 +56,7 @@ PRODUCT_COPY_FILES += \
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-    ro.ril.hsxpa=1 \
+    ro.ril.hsxpa=2 \
     ro.ril.gprsclass=10 \
     ro.telephony.ril_class=SamsungU8500RIL \
     ro.telephony.sends_barcount=1
