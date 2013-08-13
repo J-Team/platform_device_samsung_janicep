@@ -1,6 +1,3 @@
-# Including GApps
-$(call inherit-product, vendor/google/tiny_gapps.mk)
-
 # Include common makefile
 $(call inherit-product, device/samsung/u8500-common/common.mk)
 
