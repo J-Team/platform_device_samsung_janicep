@@ -64,7 +64,7 @@ BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/janicep/vibrator/vibra
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/u8500
-TARGET_KERNEL_CONFIG := cyanogenmod_i9070p_defconfig
+TARGET_KERNEL_CONFIG := aosp_i9070p_defconfig
 
 
 # Vold
