@@ -23,4 +23,6 @@
 
 add_lunch_combo full_janicep-eng
 add_lunch_combo full_janicep-userdebug
-add_lunch_combo full_janicep-debug
+
+add_lunch_combo aosp_janicep-eng
+add_lunch_combo aosp_janicep-userdebug
