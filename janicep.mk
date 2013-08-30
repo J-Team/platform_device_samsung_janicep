@@ -3,7 +3,7 @@ $(call inherit-product, device/samsung/u8500-common/common.mk)
 
 ifneq ($(TARGET_SCREEN_HEIGHT),800)
 # Call cm.mk because somehow it's not being called!
-$(call inherit-product, device/samsung/janice/cm.mk)
+#$(call inherit-product, device/samsung/janice/cm.mk)
 endif
 
 
@@ -25,7 +25,7 @@ PRODUCT_COPY_FILES += \
 
 # Packages
 PRODUCT_PACKAGES += \
-    	GalaxyS2Settings 
+    	GalaxySAdvanceSettings 
     	
 # NFC
 PRODUCT_PACKAGES += \
