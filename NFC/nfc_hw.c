@@ -45,6 +45,13 @@ static uint8_t pn544_eedata_settings[][4] = {
     ,{0x00,0x99,0x2B,0xF3} // Type B' load modulation amplitude fine tuning
     ,{0x00,0x99,0x85,0xF1} // Type Felica load modulation amplitude fine tuning
 #endif
+#ifdef janicep
+    // Janicep load modulation settings
+//    ,{0x00,0x99,0x29,0xF3} // Type A load modulation amplitude fine tuning
+//    ,{0x00,0x99,0x2A,0xF3} // Type B load modulation amplitude fine tuning
+//    ,{0x00,0x99,0x2B,0xF3} // Type B' load modulation amplitude fine tuning
+//    ,{0x00,0x99,0x85,0xF1} // Type Felica load modulation amplitude fine tuning
+#endif
     // For tuna we don't override load modulation settings.
 
     // Enable PBTF
