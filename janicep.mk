@@ -29,6 +29,7 @@ PRODUCT_PACKAGES += \
     	
 # NFC
 PRODUCT_PACKAGES += \
+#        nfc.janicep \  --work in progress--
 	libnfc \
 	libnfc_jni \
 	Nfc \
@@ -41,6 +42,9 @@ PRODUCT_COPY_FILES += \
 # file that declares the MIFARE NFC constant
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+	
+# other NFC permission
+frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
 # NFC EXTRAS add-on API
 PRODUCT_PACKAGES += \
