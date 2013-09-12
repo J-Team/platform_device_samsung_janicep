@@ -31,28 +31,6 @@ static uint8_t pn544_eedata_settings[][4] = {
     ,{0x00,0x9B,0xD6,0x1E} // GSP setting for this threshold
     ,{0x00,0x9B,0xDD,0x1C} // GSP setting for this threshold
     ,{0x00,0x9B,0x84,0x13} // ANACM2 setting
-#ifdef maguro
-    // Maguro load modulation settings
-    ,{0x00,0x99,0x29,0xF4} // Type A load modulation amplitude fine tuning
-    ,{0x00,0x99,0x2A,0xF4} // Type B load modulation amplitude fine tuning
-    ,{0x00,0x99,0x2B,0xF4} // Type B' load modulation amplitude fine tuning
-    ,{0x00,0x99,0x85,0xF1} // Type Felica load modulation amplitude fine tuning
-#endif
-#ifdef toro
-    // Toro load modulation settings
-    ,{0x00,0x99,0x29,0xF3} // Type A load modulation amplitude fine tuning
-    ,{0x00,0x99,0x2A,0xF3} // Type B load modulation amplitude fine tuning
-    ,{0x00,0x99,0x2B,0xF3} // Type B' load modulation amplitude fine tuning
-    ,{0x00,0x99,0x85,0xF1} // Type Felica load modulation amplitude fine tuning
-#endif
-#ifdef janicep
-    // Janicep load modulation settings
-//    ,{0x00,0x99,0x29,0xF3} // Type A load modulation amplitude fine tuning
-//    ,{0x00,0x99,0x2A,0xF3} // Type B load modulation amplitude fine tuning
-//    ,{0x00,0x99,0x2B,0xF3} // Type B' load modulation amplitude fine tuning
-//    ,{0x00,0x99,0x85,0xF1} // Type Felica load modulation amplitude fine tuning
-#endif
-    // For tuna we don't override load modulation settings.
 
     // Enable PBTF
     ,{0x00,0x98,0x00,0x3F} // SECURE_ELEMENT_CONFIGURATION - No Secure Element
@@ -130,13 +108,13 @@ static int nfc_open(const hw_module_t* module, const char* name,
         dev->common.close = pn544_close;
 
         dev->num_eeprom_settings = sizeof(pn544_eedata_settings) / 4;
+        dev->eeprom_settings = (uint8_t*)pn544_eedata_settings;
 //        -------------------------------------------------------------
-//          different
-//        dev->eeprom_settings = (uint8_t*)pn544_eedata_settings;
+//          to set
 //        dev->linktype = PN544_LINK_TYPE_UART;
 //        dev->device_node = "/dev/ttyO3";
-//        dev->enable_i2c_workaround = 0;
 //        -------------------------------------------------------------
+        dev->enable_i2c_workaround = 0;
         *device = (hw_device_t*) dev;
         return 0;
     } else {
