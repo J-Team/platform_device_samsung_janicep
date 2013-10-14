@@ -34,10 +34,6 @@ PRODUCT_PACKAGES += \
 	libnfc_jni \
 	Nfc \
 	Tag
-	
-# NFC Prebuilt
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/NFC/nfc.samsungjanice.so:system/lib/hw/nfc.samsungjanice.so
 
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += \
