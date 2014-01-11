@@ -35,3 +35,10 @@ ste.cam.back.orientation=90
 
 # STE: Camera file path configuration
 ste.cam.ext.cfg.path.secondary=/system/usr/share/camera/config_file/samsung_s5k4ecgx_janice.dat
+
+# NFC
+ro.nfc.on.default=false
+ro.nfc.se.sim.enable=true
+ro.nfc.se.smx.enable=false
+ro.nfc.icon.enable=true
+ro.nfc.vendor.name=nxp
