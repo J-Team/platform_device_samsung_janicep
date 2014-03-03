@@ -29,27 +29,15 @@ PRODUCT_PACKAGES += \
     	
 # NFC
 PRODUCT_PACKAGES += \
-#        nfc.janicep \  --work in progress--
+        com.android.nfc_extras
 	libnfc \
 	libnfc_jni \
 	Nfc \
 	Tag
-
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += \
-	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt
-
-# file that declares the MIFARE NFC constant
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
-	
-# other NFC permission
-frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
-
-# NFC EXTRAS add-on API
-PRODUCT_PACKAGES += \
-	com.android.nfc_extras
-PRODUCT_COPY_FILES += \
+	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
+	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+        frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
 	frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # NFCEE access control
