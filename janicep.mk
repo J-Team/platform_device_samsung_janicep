@@ -1,31 +1,44 @@
 # Include common makefile
 $(call inherit-product, device/samsung/u8500-common/common.mk)
 
-ifneq ($(TARGET_SCREEN_HEIGHT),800)
-# Call cm.mk because somehow it's not being called!
-#$(call inherit-product, device/samsung/janice/cm.mk)
-endif
+# Use non-open-source parts if present
+$(call inherit-product-if-exists, vendor/samsung/u8500-common/janicep/janicep-vendor-blobs.mk)
 
 
 LOCAL_PATH := device/samsung/janicep
+JANICE_PATH := device/samsung/janice
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# This device is HDPI
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+# STE
+PRODUCT_COPY_FILES += \
+    $(JANICE_PATH)/configs/ste_modem.sh:system/etc/ste_modem.sh
 
 # Tee
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/tee/cops_ta.ssw:system/lib/tee/cops_ta.ssw \
     $(LOCAL_PATH)/tee/custom_ta.ssw:system/lib/tee/custom_ta.ssw \
     $(LOCAL_PATH)/tee/libbassapp_ssw:system/lib/tee/libbassapp_ssw \
-    $(LOCAL_PATH)/tee/smcl_ta_8500bx_secure.ssw:system/lib/tee/smcl_ta_8500bx_secure.ssw 
+    $(LOCAL_PATH)/tee/smcl_ta_8500bx_secure.ssw:system/lib/tee/smcl_ta_8500bx_secure.ssw
+    
+# Enable AAC 5.1 output
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.aac_51_output_enabled=true
 
 # Packages
 PRODUCT_PACKAGES += \
-    	GalaxySAdvanceSettings 
+    	GalaxySAdvanceSettings
+    	
+# Gps
+PRODUCT_COPY_FILES += \
+    $(JANICE_PATH)/configs/gps.conf:system/etc/gps.conf
+    
+# Compass workaround
+PRODUCT_COPY_FILES += \
+    $(JANICE_PATH)/configs/compass:system/etc/init.d/compass
+
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
     	
 # NFC
 PRODUCT_PACKAGES += \
@@ -49,14 +62,6 @@ endif
 PRODUCT_COPY_FILES += \
 	$(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    ro.telephony.ril_class=SamsungU8500RIL \
-    ro.telephony.sends_barcount=1
-
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.samsungjanicep:root/fstab.samsungjanicep \
@@ -64,18 +69,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.samsungjanicep.usb.rc:root/init.samsungjanicep.usb.rc \
     $(LOCAL_PATH)/rootdir/prerecovery.rc:root/prerecovery.rc \
     $(LOCAL_PATH)/rootdir/ueventd.samsungjanicep.rc:root/ueventd.samsungjanicep.rc
+    
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(JANICE_PATH)/configs/adm.sqlite-u8500:system/etc/adm.sqlite-u8500 \
+    $(JANICE_PATH)/configs/audio_policy.conf:system/vendor/etc/audio_policy.conf \
+    $(JANICE_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+
 
 # RIL
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
    $(LOCAL_PATH)/configs/model_id.cfg:system/etc/AT/model_id.cfg \
    $(LOCAL_PATH)/configs/system_id.cfg:system/etc/AT/system_id.cfg
-
-# Keylayout
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/usr/keylayout/janice-kp.kl:system/usr/keylayout/janice-kp.kl \
-    $(LOCAL_PATH)/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl
-
-# Use non-open-source parts if present
-$(call inherit-product-if-exists, vendor/samsung/u8500-common/janicep/janice-vendor.mk)
