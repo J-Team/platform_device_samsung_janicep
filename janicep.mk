@@ -66,9 +66,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(JANICE_PATH)/rootdir/fstab.samsungjanice:root/fstab.samsungjanicep \
     $(LOCAL_PATH)/rootdir/init.samsungjanicep.rc:root/init.samsungjanice.rc \
-    $(LOCAL_PATH)/rootdir/init.samsungjanicep.usb.rc:root/init.samsungjanicep.usb.rc \
-    $(LOCAL_PATH)/rootdir/prerecovery.rc:root/prerecovery.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.samsungjanicep.rc:root/ueventd.samsungjanicep.rc
+    $(JANICE_PATH)/rootdir/init.samsungjanice.usb.rc:root/init.samsungjanicep.usb.rc \
+    $(JANICE_PATH)/rootdir/init.recovery.samsungjanice.rc:root/init.recovery.samsungjanicep.rc \
+    $(JANICE_PATH)/rootdir/ueventd.samsungjanice.rc:root/ueventd.samsungjanicep.rc
     
 # Permissions
 PRODUCT_COPY_FILES += \
