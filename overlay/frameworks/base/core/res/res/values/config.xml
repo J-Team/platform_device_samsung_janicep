@@ -75,11 +75,7 @@
         <item>0</item> <!-- (1000 - 10000) Outdoor-->
         <item>0</item> <!-- (10000 - 16000) Sunlight outdoor -->
     </integer-array>
-    
-    <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-    
-    
+
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
          Here are a few of them:
