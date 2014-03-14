@@ -256,6 +256,10 @@ on post-fs-data
     chmod 0775 /data/log
     chmod 0775 /data/anr
 
+    # Permissions for NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0600 /dev/pn544
+    chown nfc nfc /dev/pn544
 
     # After we setup wireless subsystem, let dnsmasq create files for soft ap
     chown dhcp system /data/misc/dhcp
