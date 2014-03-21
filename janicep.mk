@@ -2,7 +2,7 @@
 $(call inherit-product, device/samsung/u8500-common/common.mk)
 
 # Use non-open-source parts if present
-$(call inherit-product-if-exists, vendor/samsung/u8500-common/janicep/janicep-vendor-blobs.mk)
+$(call inherit-product-if-exists, vendor/samsung/u8500-common/janice/janicep-vendor-blobs.mk)
 
 
 LOCAL_PATH := device/samsung/janicep
