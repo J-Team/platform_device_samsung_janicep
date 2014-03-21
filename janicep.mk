@@ -30,9 +30,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     	GalaxySAdvanceSettings
     	
-# Gps
+# GPS
 PRODUCT_COPY_FILES += \
-    $(JANICE_PATH)/configs/gps.conf:system/etc/gps.conf
+    $(JANICE_PATH)/configs/gps.conf:system/etc/gps.conf \
+    $(JANICE_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
     
 # Compass workaround
 PRODUCT_COPY_FILES += \
