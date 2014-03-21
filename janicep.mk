@@ -81,6 +81,13 @@ PRODUCT_COPY_FILES += \
     $(JANICE_PATH)/configs/adm.sqlite-u8500:system/etc/adm.sqlite-u8500 \
     $(JANICE_PATH)/configs/audio_policy.conf:system/vendor/etc/audio_policy.conf \
     $(JANICE_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    
+# Storage switch script
+PRODUCT_COPY_FILES += \
+   $(JANICE_PATH)/configs/SwapStorages.sh:system/xbin/SwapStorages.sh
+PRODUCT_PROPERTY_OVERRIDES += \
+   persist.sys.vold.switchablepair=sdcard0,sdcard1 \
+   persist.sys.vold.switchexternal=0
 
 
 # RIL
