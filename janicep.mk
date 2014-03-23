@@ -2,7 +2,7 @@
 $(call inherit-product, device/samsung/u8500-common/common.mk)
 
 # Use non-open-source parts if present
-$(call inherit-product-if-exists, vendor/samsung/u8500-common/janicep/janicep-vendor-blobs.mk)
+$(call inherit-product-if-exists, vendor/samsung/u8500-common/janice/janicep-vendor-blobs.mk)
 
 
 LOCAL_PATH := device/samsung/janicep
@@ -40,19 +40,6 @@ PRODUCT_COPY_FILES += \
     $(JANICE_PATH)/configs/compass:system/etc/init.d/compass
 
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
-    	
-# NFC
-PRODUCT_PACKAGES += \
-        com.android.nfc_extras
-	libnfc \
-	libnfc_jni \
-	Nfc \
-	Tag
-PRODUCT_COPY_FILES += \
-	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
-	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-        frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-	frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -89,9 +76,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
    persist.sys.vold.switchablepair=sdcard0,sdcard1 \
    persist.sys.vold.switchexternal=0
 
-
 # RIL
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/manuf_id.cfg:system/etc/AT/manuf_id.cfg \
    $(LOCAL_PATH)/configs/model_id.cfg:system/etc/AT/model_id.cfg \
    $(LOCAL_PATH)/configs/system_id.cfg:system/etc/AT/system_id.cfg
+
+# NFC
+PRODUCT_PACKAGES += \
+        com.android.nfc_extras \
+	libnfc \
+	libnfc_jni \
+	Nfc \
+	Tag
+PRODUCT_COPY_FILES += \
+	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
+	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+        frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+	frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
